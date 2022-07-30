@@ -2,6 +2,7 @@ import {Application} from "express";
 import * as express from "express";
 import deploymentsRoutes from "./DeploymentsRoutes";
 import healthCheckRoutes from "./HealthCheckRoutes";
+import workExperienceRoutes from "./WorkExperienceRoutes";
 import bodyParser from "body-parser";
 import cors from 'cors'
 
@@ -12,5 +13,6 @@ export default class MainRoutes {
         app.use(bodyParser.json());
         app.use('/healthCheck', healthCheckRoutes);
         app.use('/deployments', deploymentsRoutes);
+        app.use('/workExperience', workExperienceRoutes);
     }
 }

@@ -10,6 +10,43 @@ model Deployment {
     url String
 }
 
+model WorkExperience {
+    id Int @id @default(autoincrement())
+    company String
+    position String
+    employmentType String
+    isCurrent Boolean
+    startDate DateTime
+    endDate DateTime
+    location Location @relation(fields: [locationId], references: [id])
+    locationId Int
+    responsibilities Responsibility[]
+    links Link[]
+}
+
+model Responsibility {
+    id Int @id @default(autoincrement())
+    responsibility String
+    workExperience WorkExperience @relation(fields: [workExperienceId], references: [id])
+    workExperienceId Int
+}
+
+model Location {
+    id Int @id @default(autoincrement())
+    city String
+    country String
+    workExperience WorkExperience[]
+    @@unique(fields: [city, country])
+}
+
+model Link {
+    id Int @id @default(autoincrement())
+    description String
+    url String
+    workExperience WorkExperience @relation(fields: [workExperienceId], references: [id])
+    workExperienceId Int
+}
+
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")

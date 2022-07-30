@@ -1,4 +1,4 @@
-import {IDeploymentsRepository} from "../repository/IDeploymentsRepository";
+import {IDeploymentsRepository} from "../repository/deployments/IDeploymentsRepository";
 import RepositoryProvider from "../helper/RepositoryProvider";
 import {Request, Response} from "express";
 import {body} from "express-validator";

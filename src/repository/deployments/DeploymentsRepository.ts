@@ -1,7 +1,7 @@
 import {IDeploymentsRepository} from "./IDeploymentsRepository";
-import Deployment from "../model/Deployment";
+import Deployment from "../../model/Deployment";
 import {PrismaClient} from "@prisma/client";
-import PrismaClientProvider from "../helper/PrismaClientProvider";
+import PrismaClientProvider from "../../helper/PrismaClientProvider";
 
 export default class DeploymentsRepository implements IDeploymentsRepository {
 
