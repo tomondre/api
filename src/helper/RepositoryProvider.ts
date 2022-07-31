@@ -4,12 +4,15 @@ import {IWorkExperienceRepository} from "../repository/workExperience/IWorkExper
 import WorkExperienceRepository from "../repository/workExperience/WorkExperienceRepository";
 import {IEducationRepository} from "../repository/education/IEducationRepository";
 import EducationRepository from "../repository/education/EducationRepository";
+import IProjectRepository from "../repository/project/IProjectRepository";
+import ProjectRepository from "../repository/project/ProjectRepository";
 
 export default class RepositoryProvider {
 
     private static deploymentsRepository: IDeploymentsRepository;
     private static workExperienceRepository: IWorkExperienceRepository;
     private static educationRepository: IEducationRepository;
+    private static projectRepository: IProjectRepository;
 
     private constructor() {}
 
@@ -32,5 +35,12 @@ export default class RepositoryProvider {
             this.educationRepository = new EducationRepository();
         }
         return this.educationRepository;
+    }
+
+    static getProjectRepository(): IProjectRepository {
+        if (!this.projectRepository) {
+            this.projectRepository = new ProjectRepository();
+        }
+        return this.projectRepository;
     }
 }

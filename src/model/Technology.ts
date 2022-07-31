@@ -1,15 +1,15 @@
 export default class Technology {
-    private _name: string;
+    private _technology: string;
 
-    constructor(name: string) {
-        this._name = name;
+    constructor(technology: string) {
+        this._technology = technology;
     }
 
-    get name(): string {
-        return this._name;
+    get technology(): string {
+        return this._technology;
     }
 
-    set name(value: string) {
-        this._name = value;
+    set technology(value: string) {
+        this._technology = value;
     }
 }

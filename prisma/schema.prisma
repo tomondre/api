@@ -37,18 +37,21 @@ model Location {
   country        String
   workExperience WorkExperience[]
   Education      Education[]
+  Project        Project[]
 
   @@unique(fields: [city, country])
 }
 
 model Link {
-  id               Int            @id @default(autoincrement())
+  id               Int             @id @default(autoincrement())
   description      String
   url              String
   workExperience   WorkExperience? @relation(fields: [workExperienceId], references: [id])
   workExperienceId Int?
   education        Education?      @relation(fields: [educationId], references: [id])
   educationId      Int?
+  project          Project?        @relation(fields: [projectId], references: [id])
+  projectId        Int?
 }
 
 model Education {
@@ -70,6 +73,38 @@ model Activity {
   activity    String
   education   Education @relation(fields: [educationId], references: [id])
   educationId Int
+}
+
+model Project {
+  id           Int           @id @default(autoincrement())
+  name         String
+  description  String @db.VarChar(1500)
+  status       String
+  category     String
+  startDate    DateTime
+  endDate      DateTime
+  location     Location      @relation(fields: [locationId], references: [id])
+  locationId   Int
+  client       String
+  technologies Technology[]
+  links        ProjectLink[]
+  Link         Link[]
+}
+
+model ProjectLink {
+  id          Int     @id @default(autoincrement())
+  url         String
+  description String
+  type        String
+  project     Project @relation(fields: [projectId], references: [id])
+  projectId   Int
+}
+
+model Technology {
+  id        Int     @id @default(autoincrement())
+  technology      String
+  project   Project @relation(fields: [projectId], references: [id])
+  projectId Int
 }
 
 datasource db {
