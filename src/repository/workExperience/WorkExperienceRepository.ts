@@ -45,6 +45,8 @@ export default class WorkExperienceRepository implements IWorkExperienceReposito
                 delete link['id']
                 // @ts-ignore
                 delete link['workExperienceId'];
+                // @ts-ignore
+                delete link['educationId'];
             });
         })
 

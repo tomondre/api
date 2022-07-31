@@ -3,48 +3,73 @@ generator client {
 }
 
 model Deployment {
-    id Int @id @default(autoincrement())
-    name String
-    description String
-    deployedOn DateTime
-    url String
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  deployedOn  DateTime
+  url         String
 }
 
 model WorkExperience {
-    id Int @id @default(autoincrement())
-    company String
-    position String
-    employmentType String
-    isCurrent Boolean
-    startDate DateTime
-    endDate DateTime
-    location Location @relation(fields: [locationId], references: [id])
-    locationId Int
-    responsibilities Responsibility[]
-    links Link[]
+  id               Int              @id @default(autoincrement())
+  company          String
+  position         String
+  employmentType   String
+  isCurrent        Boolean
+  startDate        DateTime
+  endDate          DateTime
+  location         Location         @relation(fields: [locationId], references: [id])
+  locationId       Int
+  responsibilities Responsibility[]
+  links            Link[]
 }
 
 model Responsibility {
-    id Int @id @default(autoincrement())
-    responsibility String
-    workExperience WorkExperience @relation(fields: [workExperienceId], references: [id])
-    workExperienceId Int
+  id               Int            @id @default(autoincrement())
+  responsibility   String
+  workExperience   WorkExperience @relation(fields: [workExperienceId], references: [id])
+  workExperienceId Int
 }
 
 model Location {
-    id Int @id @default(autoincrement())
-    city String
-    country String
-    workExperience WorkExperience[]
-    @@unique(fields: [city, country])
+  id             Int              @id @default(autoincrement())
+  city           String
+  country        String
+  workExperience WorkExperience[]
+  Education      Education[]
+
+  @@unique(fields: [city, country])
 }
 
 model Link {
-    id Int @id @default(autoincrement())
-    description String
-    url String
-    workExperience WorkExperience @relation(fields: [workExperienceId], references: [id])
-    workExperienceId Int
+  id               Int            @id @default(autoincrement())
+  description      String
+  url              String
+  workExperience   WorkExperience? @relation(fields: [workExperienceId], references: [id])
+  workExperienceId Int?
+  education        Education?      @relation(fields: [educationId], references: [id])
+  educationId      Int?
+}
+
+model Education {
+  id           Int        @id @default(autoincrement())
+  school       String
+  degree       String
+  fieldOfStudy String
+  isCurrent    Boolean
+  startDate    DateTime
+  endDate      DateTime
+  location     Location   @relation(fields: [locationId], references: [id])
+  locationId   Int
+  activities   Activity[]
+  links        Link[]
+}
+
+model Activity {
+  id          Int       @id @default(autoincrement())
+  activity    String
+  education   Education @relation(fields: [educationId], references: [id])
+  educationId Int
 }
 
 datasource db {
