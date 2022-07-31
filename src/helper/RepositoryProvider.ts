@@ -8,6 +8,8 @@ import IProjectRepository from "../repository/project/IProjectRepository";
 import ProjectRepository from "../repository/project/ProjectRepository";
 import {ICertificateRepository} from "../repository/certificate/ICertificateRepository";
 import CertificateRepository from "../repository/certificate/CertificateRepository";
+import {ILinkRepository} from "../repository/link/ILinkRepository";
+import LinkRepository from "../repository/link/LinkRepository";
 
 export default class RepositoryProvider {
 
@@ -16,6 +18,7 @@ export default class RepositoryProvider {
     private static educationRepository: IEducationRepository;
     private static projectRepository: IProjectRepository;
     private static certificateRepository: ICertificateRepository;
+    private static linkRepository: ILinkRepository;
 
     private constructor() {}
 
@@ -52,5 +55,12 @@ export default class RepositoryProvider {
             this.certificateRepository = new CertificateRepository();
         }
         return this.certificateRepository;
+    }
+
+    static getLinkRepository(): ILinkRepository {
+        if (!this.linkRepository) {
+            this.linkRepository = new LinkRepository();
+        }
+        return this.linkRepository;
     }
 }
