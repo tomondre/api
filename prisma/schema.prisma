@@ -78,7 +78,7 @@ model Activity {
 model Project {
   id           Int           @id @default(autoincrement())
   name         String
-  description  String @db.VarChar(1500)
+  description  String        @db.VarChar(1500)
   status       String
   category     String
   startDate    DateTime
@@ -101,10 +101,20 @@ model ProjectLink {
 }
 
 model Technology {
-  id        Int     @id @default(autoincrement())
-  technology      String
-  project   Project @relation(fields: [projectId], references: [id])
-  projectId Int
+  id         Int     @id @default(autoincrement())
+  technology String
+  project    Project @relation(fields: [projectId], references: [id])
+  projectId  Int
+}
+
+model Certificate {
+  id           Int      @id @default(autoincrement())
+  name         String
+  organization String
+  issuedDate   DateTime
+  expiryDate   DateTime
+  credentialId String
+  url          String
 }
 
 datasource db {
