@@ -27,7 +27,7 @@ export default class CertificateController {
 
     async createCertificate(req: Request, res: Response) {
         try {
-            let certificate = new Certificate(req.body.name, req.body.organization, new Date(req.body.issuedDate), new Date(req.body.expiryDate), req.body.credentialId, req.body.url);
+            let certificate = new Certificate(req.body.name, req.body.organization, req.body.description, new Date(req.body.issuedDate), new Date(req.body.expiryDate), req.body.credentialId, req.body.url);
             let created = await this.certificateRepository.createCertificate(certificate);
             res.json(created);
         }
