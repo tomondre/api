@@ -111,6 +111,7 @@ model Certificate {
   id           Int      @id @default(autoincrement())
   name         String
   organization String
+  description  String @db.LongText
   issuedDate   DateTime
   expiryDate   DateTime
   credentialId String

@@ -1,18 +1,28 @@
 export default class Certificate {
     private _name: string;
     private _organization: string;
+    private _description: string;
     private _issuedDate: Date;
     private _expiryDate: Date;
     private _credentialId: string;
     private _url: string;
 
-    constructor(name: string, organization: string, issuedDate: Date, expiryDate: Date, credentialId: string, url: string) {
+    constructor(name: string, organization: string, description: string, issuedDate: Date, expiryDate: Date, credentialId: string, url: string) {
         this._name = name;
         this._organization = organization;
+        this._description = description;
         this._issuedDate = issuedDate;
         this._expiryDate = expiryDate;
         this._credentialId = credentialId;
         this._url = url;
+    }
+
+    get description(): string {
+        return this._description;
+    }
+
+    set description(value: string) {
+        this._description = value;
     }
 
     get name(): string {

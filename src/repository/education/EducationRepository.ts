@@ -46,6 +46,8 @@ export default class EducationRepository implements IEducationRepository {
                 delete link['educationId'];
                 // @ts-ignore
                 delete link['workExperienceId'];
+                // @ts-ignore
+                delete link['projectId'];
             })
         });
 

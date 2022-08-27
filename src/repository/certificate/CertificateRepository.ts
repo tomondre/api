@@ -24,6 +24,7 @@ export default class CertificateRepository implements ICertificateRepository {
                 issuedDate: certificate.issuedDate,
                 expiryDate: certificate.expiryDate,
                 credentialId: certificate.credentialId,
+                description: certificate.description,
                 url: certificate.url
             }
         });
