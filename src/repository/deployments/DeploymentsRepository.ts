@@ -28,7 +28,8 @@ export default class DeploymentsRepository implements IDeploymentsRepository {
                 name: body.name,
                 deployedOn: body.deployedOn,
                 description: body.description,
-                url: body.url
+                url: body.url,
+                healthUrl: body.healthUrl
             }
         });
     }

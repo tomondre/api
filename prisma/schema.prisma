@@ -8,6 +8,7 @@ model Deployment {
   description String
   deployedOn  DateTime
   url         String
+  healthUrl   String @default("")
 }
 
 model WorkExperience {

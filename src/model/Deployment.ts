@@ -7,12 +7,22 @@ export default class Deployment {
     private _description: string;
     private _deployedOn: Date;
     private _url: string;
+    private _healthUrl: string;
 
-    constructor(name: string, description: string, deployedOn: Date, url: string) {
+    constructor(name: string, description: string, deployedOn: Date, url: string, healthUrl: string) {
         this._name = name;
         this._description = description;
         this._deployedOn = deployedOn;
         this._url = url;
+        this._healthUrl = healthUrl;
+    }
+
+    get healthUrl(): string {
+        return this._healthUrl;
+    }
+
+    set healthUrl(value: string) {
+        this._healthUrl = value;
     }
 
     get id(): number {
