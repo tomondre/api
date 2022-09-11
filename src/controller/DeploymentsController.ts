@@ -25,7 +25,7 @@ export default class DeploymentsController {
 
     async createDeployment(req: Request, res: Response) {
         try {
-            let body = new Deployment(req.body.name, req.body.description, new Date(req.body.deployedOn), req.body.url, req.body.healthUrl);
+            let body = new Deployment(0, req.body.name, req.body.description, new Date(req.body.deployedOn), req.body.repoUrl, req.body.url, req.body.healthUrl);
             let deployment = await this.deploymentsRepository.createDeployment(body);
             res.json(deployment);
         }

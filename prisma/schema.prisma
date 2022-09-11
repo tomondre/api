@@ -7,8 +7,9 @@ model Deployment {
   name        String
   description String
   deployedOn  DateTime
+  repoUrl     String @default("")
   url         String
-  healthUrl   String @default("")
+  healthUrl   String
 }
 
 model WorkExperience {

@@ -28,6 +28,7 @@ export default class DeploymentsRepository implements IDeploymentsRepository {
                 name: body.name,
                 deployedOn: body.deployedOn,
                 description: body.description,
+                repoUrl: body.repoUrl,
                 url: body.url,
                 healthUrl: body.healthUrl
             }
